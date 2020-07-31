@@ -1,0 +1,49 @@
+.list{
+  background-color: #fff;
+  width: calc(~'100% - 80px');
+  border-radius: 20px;
+  max-height: 400px;
+  min-height: 100px;
+  padding: 10px;
+  overflow-y: auto;
+  .list-content{
+    .item{
+      margin: 20px 0;
+      .item-name{
+        width: 250px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        .songName{
+          font-size: 16px;
+          height: 20px;
+          line-height: 20px;
+        }
+        .autorName{
+          font-size: 12px;
+          height: 17px;
+          padding-top: 3px;
+          color: #999;
+        }
+        
+      }
+      .item-name.active{
+        .songName{
+          color:red
+        }
+        .autorName{
+          color:red
+        }
+      }
+      .del{
+        color: #999;
+        font-size: 16px;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        line-height: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,288 @@
+.music-play {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.music-img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 50%;
+  img {
+    border-radius: 50%;
+  }
+}
+.name {
+  width: 120px;
+  height: 50px;
+  padding: 8px;
+  
+  .music-name {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .auto-name {
+    font-size: 12px;
+    color: #8e8e8e;
+  }
+}
+.right {
+  width: 100px;
+  height: 50px;
+}
+.up{
+  width: 28px;
+  height: 28px;
+  margin-left: -70px;
+  margin-top: 11px;
+}
+.next{
+  width: 28px;
+  height: 28px;
+  margin-top: 11px;
+  margin-left: 10px;
+}
+.stop-play {
+  width: 28px;
+  margin-top: 11px;
+  margin-left: -30px;
+  position: relative;
+  img{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .circle{
+    position: absolute;
+    top:0px;
+    left: -1px;
+
+  }
+}
+.more {
+  width: 28px;
+  margin-top: 11px;
+  margin-right: 10px;
+  .van-icon {
+    font-size: 28px;
+  }
+}
+.audio {
+  position: absolute;
+  display: none;
+}
+
+.cell{
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  opacity: 0;
+  
+}
+
+
+//弹出层
+.van-popup--center{
+  transform: translate3d(0,0,0);
+  top: 0;
+  left: 0;
+}
+
+.popup{
+  width: 376px;
+  height: 667px;
+  .popup-box{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+  }
+  .mask{
+    width: 375px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: blur(50px);
+    opacity: 0.5;
+  }
+  .content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .van-row{
+    height: 40px;
+  }
+  .back{
+    text-align: center;
+    margin-top: 5px;
+  }
+  .name{
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    width: 200px;
+    color:#fff;
+    
+    .songName{
+      font-size: 16px;
+      margin-top: 5px;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+    .autorName{
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  }
+  .share{
+    width: 25px;
+    height: 25px;
+    margin: 8px auto;
+  }
+}
+.popup-content{
+    .screen{
+      width: 100%;
+      height: 480px;
+      position: relative;
+    }
+    // 歌词
+    .lyric{
+      position: absolute;
+      width: 300px;
+      height: 350px;
+      top: 50px;
+      left: 40px;
+      overflow-y: auto;
+
+      .lyric-item{
+        color: #999;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 5px;
+        &.active{
+          color: white;
+        }
+      }
+    }
+
+
+
+    .plybtn::after{
+      content: '';
+      width: 96px;
+      height: 137px;
+      display: block;
+      position: absolute;
+      background: url("//s3.music.126.net/mobile-new/img/needle.png?702cf6d95f29e2e594f53a3caab50e12=") no-repeat;
+      background-size: cover;
+      z-index: 1;
+      top: 0;
+      left: 180px;
+    }
+    .cd::after{
+      content:'';
+      width: 296px;
+      height: 296px;
+      top: 50px;
+      left: 35px;
+      display: block;
+      position: absolute;
+      background: url("//s3.music.126.net/mobile-new/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f=") no-repeat;
+      background-size: cover;
+    }
+    .music-pic{
+      position: absolute;
+      top:107px;
+      left: 90px;
+      animation: turn 10s linear infinite;
+      img{
+        width: 184px;
+        height: 184px;
+        border-radius: 50%;
+      }
+      
+      @keyframes turn{
+        0%{transform:rotate(0deg);}
+        25%{transform:rotate(90deg);}
+        50%{transform:rotate(180deg);}
+        75%{transform:rotate(270deg);}
+        100%{transform:rotate(360deg);}
+      }
+    }
+
+
+}
+
+
+.progress{
+  margin-top: 20px;
+  height: 20px;
+
+  color: white;
+  line-height: 20px;
+  .current-time{
+   margin-left: 20px;
+   height: 20px;
+  }
+  .bar{
+    width: 260px;
+    height: 13px;
+    padding-top: 7px;
+    margin-left: 10px;
+  }
+  .allTime{
+    margin-left: 10px;
+    height: 20px;
+  }
+}
+.footer-btn{
+  margin-top: 10px;
+  .model{
+    width: 30px;
+    height: 30px;
+    margin-left: 35px;
+  }
+  .left-btn{
+    width: 30px;
+    height: 30px;
+    margin-left: 35px;
+  }
+  .playStop{
+    width: 40px;
+    height: 40px;
+    margin-left: 35px;
+  }
+  .right-btn{
+    width: 30px;
+    height: 30px;
+    margin-left: 35px;
+  }
+  .menu{
+    width: 30px;
+    height: 30px;
+    margin-left: 35px;
+  }
+}
+
+.listPopup{
+  border-radius: 15px;
+  padding: 0 30px;
+  bottom: 50px;
+  background-color: transparent;
+}
+
+
+
