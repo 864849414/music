@@ -48,7 +48,10 @@ export default {
   },
   created() {
     this.getDayRecommendData();
-    this.pic = this.$store.state.banner[5]
+    this.pic = this.$store.state.banner[5];
+    if(document.cookie.indexOf('MUSIC_U')==-1){
+      this.$router.push({name:'Login'})
+    }
   },
   methods: {
     back(){
