@@ -48,16 +48,13 @@ export default {
   },
   created() {
     this.getDayRecommendData();
-    this.pic = this.$store.state.banner[5];
-    if(document.cookie.indexOf('MUSIC_U')==-1){
-      this.$router.push({name:'Login'})
-    }
+    this.getBanner();
   },
   methods: {
     back(){
         this.$router.go(-1)
     },
-    // 获取日推歌曲数据(需要登录)
+    // 获取日推歌曲数据
     getDayRecommendData() {
       this.$toast.loading({
         message: "加载中...",
@@ -65,27 +62,34 @@ export default {
         orbidClick: true
       });
       this.axios({
-        method:'GET',
-        url: "/recommend/songs"
+        method: "GET",
+        url: "/top/song",
+        params: {
+          type:7
+        }
       })
         .then(result => {
           this.$toast.clear();
           
-          result.data.data.dailySongs.forEach(v=>{
-            let o={
-            songName:'',
-            autorName:'',
-            url:'',
-            pic:'',
-            id:''
-            }
+          let data = result.data.data.slice(0, 10);
+          let songs = [];
+          data.forEach(v => {
+            let o = {
+              songName: "",
+              autorName: "",
+              pic: "",
+              id: "",
+              url: ""
+            };
             o.songName = v.name;
-            o.autorName = v.ar[0].name;
-            o.pic = v.al.picUrl
-            o.id = v.id
-            this.songData.push(o)
-
-          })
+            o.autorName = v.artists[0].name;
+            o.pic = v.album.picUrl;
+            o.id = v.id;
+            o.url = v.mp3Url;
+            songs.push(o);
+          });
+          this.songData = songs;
+          
           
         })
         .catch(err => {
@@ -93,7 +97,26 @@ export default {
           
         });
     },
-
+    //获取banner图片
+    getBanner() {
+      this.$toast.loading({
+        message: "加载中...",
+        duration: 0,
+        orbidClick: true
+      })
+      this.axios({
+        url: "/banner"
+      })
+        .then(result => {
+          this.$toast.clear()
+          
+          this.pic=result.data.banners[5].imageUrl     
+          
+        })
+        .catch(err => {
+          this.$toast.clear()
+        })
+    },
     //获取音乐url
     getUrl(id,index){
       this.$toast.loading({
